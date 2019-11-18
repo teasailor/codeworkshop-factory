@@ -1,17 +1,21 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id "org.springframework.boot" version "2.2.1.RELEASE"
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+//    id "nebula.lint" version "16.0.2"
+}
 
 bootJar {
     baseName = 'gs-spring-boot'
@@ -22,12 +26,15 @@ repositories {
     mavenCentral()
 }
 
+//gradleLint.rules = ['all-dependency']
+
 sourceCompatibility = 11
 targetCompatibility = 11
 
 dependencies {
     implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+    implementation group: 'com.google.code.findbugs', name: 'annotations', version: '3.0.1'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.1.RELEASE'
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
     testImplementation("junit:junit")
 }

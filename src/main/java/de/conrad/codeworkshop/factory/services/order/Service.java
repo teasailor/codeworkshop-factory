@@ -7,6 +7,7 @@ import de.conrad.codeworkshop.factory.services.order.api.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigInteger;
 import java.util.Random;
@@ -18,10 +19,11 @@ import java.util.Random;
  */
 @org.springframework.stereotype.Service
 @RequestMapping("/order")
+@RestController
 public class Service {
 
     @Autowired
-    de.conrad.codeworkshop.factory.services.factory.Service factoryService;
+    de.conrad.codeworkshop.factory.services.factory.Controller factoryController;
 
     /**
      * TODO please make sure this method accepts and produces JSON.
@@ -37,7 +39,7 @@ public class Service {
 
             order.setOrderConfirmation(orderConfirmation);
 
-            factoryService.addToQueue(order);
+            factoryController.enqueue(order);
         } else {
             orderConfirmation = new OrderConfirmation(null);
         }
