@@ -1,16 +1,17 @@
 package de.conrad.codeworkshop.factory.services.order;
 
+import de.conrad.codeworkshop.factory.services.factory.Controller;
 import de.conrad.codeworkshop.factory.services.order.api.Order;
 import de.conrad.codeworkshop.factory.services.order.api.OrderConfirmation;
 import de.conrad.codeworkshop.factory.services.order.api.OrderNumber;
-import de.conrad.codeworkshop.factory.services.order.api.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigInteger;
 import java.util.Random;
+
+import static de.conrad.codeworkshop.factory.services.order.api.OrderConfirmation.BLANK_ORDER_CONFIRMATION;
+import static de.conrad.codeworkshop.factory.services.order.api.OrderStatus.ACCEPTED;
 
 /**
  * TODO what could be improved here?
@@ -18,14 +19,19 @@ import java.util.Random;
  * @author Andreas Hartmann
  */
 @org.springframework.stereotype.Service
-@RequestMapping("/order")
-@RestController
 public class Service {
 
+    private final Controller factoryController;
+
     @Autowired
-    de.conrad.codeworkshop.factory.services.factory.Controller factoryController;
+    public Service(de.conrad.codeworkshop.factory.services.factory.Controller factoryController) {
+        this.factoryController = factoryController;
+    }
 
     /**
+     * Validates the input order. If it is valid, it is enqueued in the factory via the factoryController. Either way an
+     * appropriate order confirmation is returned.
+     * <p>
      * TODO please make sure this method accepts and produces JSON.
      */
     @PostMapping("/create")
@@ -34,14 +40,14 @@ public class Service {
 
         final OrderConfirmation orderConfirmation;
 
-        if (order.getStatus() == OrderStatus.ACCEPTED) {
+        if (order.getStatus() == ACCEPTED) {
             orderConfirmation = new OrderConfirmation(new OrderNumber(BigInteger.valueOf(new Random().nextInt())));
 
             order.setOrderConfirmation(orderConfirmation);
 
             factoryController.enqueue(order);
         } else {
-            orderConfirmation = new OrderConfirmation(null);
+            orderConfirmation = BLANK_ORDER_CONFIRMATION;
         }
 
         return orderConfirmation;

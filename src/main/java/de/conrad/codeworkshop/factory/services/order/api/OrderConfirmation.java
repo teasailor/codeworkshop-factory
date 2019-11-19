@@ -11,6 +11,9 @@ import static de.conrad.codeworkshop.factory.services.order.api.OrderStatus.DECL
  * @author Andreas Hartmann
  */
 public class OrderConfirmation {
+
+    public static final OrderConfirmation BLANK_ORDER_CONFIRMATION = new OrderConfirmation(null);
+
     private OrderStatus status;
     private OrderNumber orderNumber;
 
