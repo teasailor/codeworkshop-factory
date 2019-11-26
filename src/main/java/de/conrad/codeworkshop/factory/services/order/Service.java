@@ -14,8 +14,6 @@ import static de.conrad.codeworkshop.factory.services.order.api.OrderConfirmatio
 import static de.conrad.codeworkshop.factory.services.order.api.OrderStatus.ACCEPTED;
 
 /**
- * TODO what could be improved here?
- *
  * @author Andreas Hartmann
  */
 @org.springframework.stereotype.Service
@@ -31,8 +29,6 @@ public class Service {
     /**
      * Validates the input order. If it is valid, it is enqueued in the factory via the factoryController. Either way an
      * appropriate order confirmation is returned.
-     * <p>
-     * TODO please make sure this method accepts and produces JSON.
      */
     @PostMapping("/create")
     public OrderConfirmation createOrder(final Order order) {
