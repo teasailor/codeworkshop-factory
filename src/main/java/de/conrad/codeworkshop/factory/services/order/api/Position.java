@@ -6,11 +6,22 @@ import java.math.BigDecimal;
  * @author Andreas Hartmann
  */
 public class Position {
-    final Integer productId;
-    final BigDecimal quantity;
+    private Integer productId;
+    private BigDecimal quantity;
 
-    public Position(Integer productId, BigDecimal quantity) {
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 }
