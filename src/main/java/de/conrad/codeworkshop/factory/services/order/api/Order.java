@@ -28,6 +28,10 @@ public class Order {
         return positions;
     }
 
+    public void setPositions(List<Position> positions) {
+        this.positions = positions;
+    }
+
     public OrderStatus getStatus() {
         return status;
     }
