@@ -13,7 +13,7 @@ import static org.springframework.http.HttpStatus.OK;
 /**
  * @author Andreas Hartmann
  */
-@RestController("FactoryController")
+@RestController("factoryController")
 @RequestMapping("/factory")
 public class Controller {
 

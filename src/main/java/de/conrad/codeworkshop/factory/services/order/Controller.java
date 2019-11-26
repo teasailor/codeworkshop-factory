@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Andreas Hartmann
  */
-@RestController("OrderController")
+@RestController("orderController")
 @RequestMapping("/order")
 public class Controller {
 

@@ -16,7 +16,7 @@ import static de.conrad.codeworkshop.factory.services.order.api.OrderStatus.ACCE
 /**
  * @author Andreas Hartmann
  */
-@org.springframework.stereotype.Service
+@org.springframework.stereotype.Service("orderService")
 public class Service {
 
     private final Controller factoryController;
