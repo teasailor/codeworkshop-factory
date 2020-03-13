@@ -21,7 +21,7 @@ public class OrderConfirmation {
     public OrderConfirmation(final OrderNumber orderNumber) {
         this.orderNumber = generate();
 
-        this.status = null == orderNumber ? ACCEPTED : DECLINED;
+        this.status = null == orderNumber ? DECLINED : ACCEPTED;
     }
 
     @Nullable
