@@ -12,6 +12,7 @@ public class Service {
         // Dummy function that would notify the customer that manufacturing is completed.
         try {
             Thread.sleep(500);
+            System.out.println("Customer is notified about order " + order);
         } catch (final InterruptedException interruptedException) {
             System.err.println(interruptedException.getMessage());
             // Do nothing
