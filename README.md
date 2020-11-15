@@ -13,3 +13,9 @@ There are three open tasks for this project. Please work on them in this order a
 3. Build a primitive asynchronous worker that will remove entries from de.conrad.codeworkshop.factory.services.factory.Service#manufacturingQueue, sets their status to COMPLETED, waits for five seconds and then calls de.conrad.codeworkshop.factory.services.notification.Service#notifyCustomer (to notify the customer that their order is completed).
 
 Please be ready to present, demonstrate and send in your results.
+
+Points to improve:
+- Fix NPEs
+- use Bean Validation, use @Valid
+- configure logging (logback-spring.xml)
+- use Lombok (toString)
