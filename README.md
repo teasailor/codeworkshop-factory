@@ -14,8 +14,20 @@ There are three open tasks for this project. Please work on them in this order a
 
 Please be ready to present, demonstrate and send in your results.
 
-Points to improve:
-- Fix NPEs
+
+# Points to improve 
+## Technical
+- fix NPEs
 - use Bean Validation, use @Valid
+- make errors clear for end users (for example, using validation errors, @ExceptionHandler)
 - configure logging (logback-spring.xml)
 - use Lombok (toString)
+
+## Style
+- Services/Controllers should be properly named (otherwise inconvenient search and ugly imports)
+- de.conrad.codeworkshop.factory.services.factory.Controller#enqueue can be simplified to one line
+- it is not classic 3layer architecture because Service uses Controller (Services should not contain @PostMapping also)
+- unconsolidated style: smth is marked as @Nullable but others are not
+
+## Security
+- "/factory/queue" is not a safe way to put an order to the queue, if it's for testing then it should be hidden from end users
