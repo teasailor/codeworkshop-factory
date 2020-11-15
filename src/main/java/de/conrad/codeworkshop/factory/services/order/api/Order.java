@@ -13,11 +13,15 @@ public class Order {
     private OrderStatus status = PENDING;
 
     public void validate() {
-        if (!positions.isEmpty() && status == PENDING) {
+        if (!positions.isEmpty() && hasValidPositions(positions) && status == PENDING) {
             status = ACCEPTED;
         } else {
             status = DECLINED;
         }
+    }
+
+    private boolean hasValidPositions(List<Position> positions) {
+        return positions.stream().allMatch(Position::isValid);
     }
 
     public void setOrderConfirmation(final OrderConfirmation orderConfirmation) {
