@@ -20,6 +20,7 @@ Please be ready to present, demonstrate and send in your results.
 - fix NPEs
 - use Bean Validation, use @Valid
 - make errors clear for end users (for example, using validation errors, @ExceptionHandler)
+- all hardcoded values should be under configuration
 - configure logging (logback-spring.xml)
 - use Lombok (toString)
 

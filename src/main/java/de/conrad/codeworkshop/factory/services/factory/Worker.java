@@ -21,7 +21,7 @@ public class Worker {
     }
 
     @Async
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 60000)
     public void completeOrders() throws InterruptedException {
         List<Order> orders = factoryService.dequeueAll();
         System.out.println(orders.size() + " orders are completed.");
