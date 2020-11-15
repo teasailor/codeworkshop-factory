@@ -35,17 +35,13 @@ public class Service {
         order.validate();
 
         final OrderConfirmation orderConfirmation;
-
         if (order.getStatus() == ACCEPTED) {
             orderConfirmation = new OrderConfirmation(new OrderNumber(BigInteger.valueOf(new Random().nextInt())));
-
             order.setOrderConfirmation(orderConfirmation);
-
             factoryController.enqueue(order);
         } else {
             orderConfirmation = BLANK_ORDER_CONFIRMATION;
         }
-
         return orderConfirmation;
     }
 }

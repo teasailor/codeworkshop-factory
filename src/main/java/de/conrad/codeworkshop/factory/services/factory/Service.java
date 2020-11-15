@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import static de.conrad.codeworkshop.factory.services.order.api.OrderStatus.COMPLETED;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -25,7 +26,7 @@ class Service {
 
     List<Order> dequeueAll() {
         List<Order> completedOrders = manufacturingQueue.stream()
-                .peek(order -> order.setStatus(OrderStatus.COMPLETED))
+                .peek(order -> order.setStatus(COMPLETED))
                 .collect(toList());
         manufacturingQueue.removeAll(completedOrders);
         return completedOrders;
