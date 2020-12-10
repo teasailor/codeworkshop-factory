@@ -1,3 +1,4 @@
+# Original task
 This application represents a factory. Customers can create orders using the OrderController's create method. The order 
 is then validated. If it is valid, its status will be set to ACCEPTED and it will get an OrderConfirmation and be put on a queue via the FactoryController. Otherwise it will get a BLANK_ORDER_CONFIRMATION.
 
@@ -18,6 +19,7 @@ Please be ready to present, demonstrate and send in your results.
 # Points to improve 
 ## Technical
 - fix NPEs
+- since Worker is sheduled without overlaping it isn't needed to make it thread-safe but if it's needed then another implementation is required
 - use Bean Validation, use @Valid
 - make errors clear for end users (for example, using validation errors, @ExceptionHandler)
 - all hardcoded values should be under configuration
